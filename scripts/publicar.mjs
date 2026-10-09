@@ -124,14 +124,21 @@ async function main() {
     for (const p of item.productos) await productoVigente(p.id, p.precio);
     const urls = await urlsPublicas(item);
 
-    if (MODO !== "real") return log(`PRUEBA OK: se publicaría "${item.id}" con ${urls.length} láminas en FB e IG. No se llamó a Meta.`);
-    if (!env.META_TOKEN || !env.FB_PAGE_ID || !env.IG_USER_ID) throw new Error("Faltan META_TOKEN, FB_PAGE_ID o IG_USER_ID");
+    // Redes: REDES="facebook" o "facebook,instagram". Sin REDES, usa Instagram solo si hay IG_USER_ID.
+    const redes = (env.REDES ? env.REDES.split(",") : env.IG_USER_ID ? ["facebook", "instagram"] : ["facebook"]).map((r) => r.trim());
+    const nombres = redes.map((r) => (r === "facebook" ? "FB" : "IG")).join(" e ");
 
-    item.facebook_id = await publicarFacebook(urls, pie);
-    item.instagram_id = await publicarInstagram(urls, pie);
+    if (MODO !== "real") return log(`PRUEBA OK: se publicaría "${item.id}" con ${urls.length} láminas en ${nombres}. No se llamó a Meta.`);
+    const faltan = [!env.META_TOKEN && "META_TOKEN", redes.includes("facebook") && !env.FB_PAGE_ID && "FB_PAGE_ID", redes.includes("instagram") && !env.IG_USER_ID && "IG_USER_ID"].filter(Boolean);
+    if (faltan.length) throw new Error(`Faltan: ${faltan.join(", ")}`);
+
+    // Cada red se registra al terminar, para no duplicar en Facebook si Instagram falla y se reintenta.
+    if (redes.includes("facebook") && !item.facebook_id) item.facebook_id = await publicarFacebook(urls, pie);
+    if (redes.includes("instagram") && !item.instagram_id) item.instagram_id = await publicarInstagram(urls, pie);
     item.estado = "publicado";
+    item.redes = redes;
     item.publicado_en = new Date().toISOString();
-    log(`Publicado ${item.id}: FB ${item.facebook_id} | IG ${item.instagram_id}`);
+    log(`Publicado ${item.id} en ${nombres}: FB ${item.facebook_id ?? "-"} | IG ${item.instagram_id ?? "-"}`);
   } catch (err) {
     item.estado = "error";
     item.error = String(err.message).slice(0, 500);

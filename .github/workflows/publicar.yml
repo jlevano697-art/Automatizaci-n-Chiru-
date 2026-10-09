@@ -38,6 +38,8 @@ jobs:
           META_TOKEN: ${{ secrets.META_TOKEN }}
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          # Opcional: variable REDES = "facebook" para publicar solo en Facebook
+          REDES: ${{ vars.REDES }}
         run: node scripts/publicar.mjs
       - name: Guardar estado de la cola
         run: |
