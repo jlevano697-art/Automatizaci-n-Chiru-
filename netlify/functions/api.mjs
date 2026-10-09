@@ -93,7 +93,14 @@ async function accionPieza(id, accion, body) {
 
 export default async (req) => {
   try {
-    if (!configurado()) return json({ error: "El panel aún no está configurado (faltan variables de entorno en Netlify)." }, 503);
+    if (!configurado()) {
+      // Solo se informan los NOMBRES de lo que falta, nunca valores.
+      const c = cfg();
+      const faltan = [!c.token && "GITHUB_TOKEN", !c.password && "PANEL_PASSWORD", !c.secret && "PANEL_SECRET"].filter(Boolean);
+      const corto = c.secret && c.secret.length < 24 ? " PANEL_SECRET es demasiado corto (mínimo 24 caracteres)." : "";
+      const detalle = faltan.length ? " Faltan: " + faltan.join(", ") + "." : "";
+      return json({ error: "El panel aún no está configurado." + detalle + corto + " Revisa las variables en Netlify y vuelve a desplegar." }, 503);
+    }
     const { secret, password } = cfg();
     const ruta = new URL(req.url).pathname.replace(/\/+$/, "");
 
