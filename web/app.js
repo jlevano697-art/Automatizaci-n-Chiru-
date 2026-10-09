@@ -7,10 +7,14 @@ let ultimaCarga = 0;
 
 const api = async (ruta, cuerpo) => {
   const r = await fetch(ruta, cuerpo ? { method: "POST", headers: { "Content-Type": "application/json", "X-Panel": "1" }, body: JSON.stringify(cuerpo) } : {});
-  const j = await r.json().catch(() => ({}));
-  if (r.status === 401 && ruta !== "/api/login") { mostrarLogin(); throw new Error("Sesión caducada. Entra de nuevo."); }
-  if (!r.ok) throw new Error(j.error || "Error");
-  return j;
+  const j = await r.json().catch(() => null);
+  if (r.status === 401 && ruta !== "/api/login" && j) { mostrarLogin(); const e = new Error("Sesión caducada. Entra de nuevo."); e.sinSesion = true; throw e; }
+  if (!r.ok) {
+    if (j && j.error) throw new Error(j.error);
+    // La respuesta no vino del panel (por ejemplo, una protección del sitio o funciones sin desplegar).
+    throw new Error("El servidor del panel no respondió como se esperaba (código " + r.status + "). Revisa el despliegue en Netlify.");
+  }
+  return j || {};
 };
 
 const mayus = (s) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -107,6 +111,7 @@ async function cargar(forzar = false) {
     ultimaCarga = Date.now(); sucio = false;
   } catch (e) {
     if (!$("#panel").hidden) $("#actualizado").textContent = e.message;
+    else if (!e.sinSesion) { $("#login").hidden = false; const m = $("#login-msg"); m.className = "msg e"; m.textContent = e.message; }
   } finally { ocupado = false; }
 }
 
