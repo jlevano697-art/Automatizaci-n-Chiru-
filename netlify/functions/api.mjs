@@ -135,6 +135,7 @@ export default async (req) => {
   } catch (err) {
     if (err instanceof ErrorDeUsuario) return json({ error: err.message }, err.codigo);
     console.error("Error del panel:", err.message); // sin datos sensibles
-    return json({ error: "No se pudo completar la operación. Intenta de nuevo." }, 500);
+    // Se muestra el motivo técnico (por ejemplo "GitHub respondió 403 al leer cola.json"); nunca incluye claves.
+    return json({ error: "No se pudo completar la operación (" + String(err.message).slice(0, 160) + "). Intenta de nuevo." }, 500);
   }
 };
