@@ -4,7 +4,7 @@
     "perfil": "Comprador que cuida su bolsillo",
     "fecha": "2026-10-09T12:00:00-05:00",
     "aprobado": true,
-    "estado": "pendiente",
+    "estado": "en_buffer",
     "laminas": [
       "publicar/05_bolsillo/01.jpg",
       "publicar/05_bolsillo/02.jpg",
@@ -26,7 +26,9 @@
         "id": "ca159455-2167-4af0-a488-357f3d58f550",
         "precio": 40
       }
-    ]
+    ],
+    "buffer_post_id": "6ac87295f07e682de6a3a229",
+    "enviado_en": "2026-10-09T04:50:29.562Z"
   },
   {
     "id": "08_hogar",
