@@ -1,0 +1,30 @@
+# Configuración de Netlify para el panel de contenido de Chiru.
+# El sitio se publica desde la carpeta "web" y las funciones (el servidor del panel) desde "netlify/functions".
+[build]
+  publish = "web"
+  functions = "netlify/functions"
+  # No reconstruir el sitio cuando solo cambian la cola o los textos (cada aprobación del panel hace un cambio así).
+  # Si no cambió nada de web/ ni de netlify/, el comando termina bien y Netlify se salta el build.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- web netlify netlify.toml"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Cabeceras de seguridad para todo el sitio.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    X-Robots-Tag = "noindex, nofollow"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' https://raw.githubusercontent.com data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "no-store"

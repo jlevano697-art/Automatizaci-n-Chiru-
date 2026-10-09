@@ -2,7 +2,7 @@ name: Enviar publicaciones a Buffer
 
 on:
   schedule:
-    - cron: "0 13 * * *"   # todos los días a las 13:00 UTC (08:00 en Lima)
+    - cron: "7 * * * *"   # cada hora (minuto 7). Solo envía lo aprobado que se publica en las próximas 48 h
   workflow_dispatch:
     inputs:
       diagnostico:

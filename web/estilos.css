@@ -1,0 +1,34 @@
+@font-face{font-family:Outfit;font-weight:600;src:url(/assets/fonts/outfit-latin-600-normal.woff2)}
+@font-face{font-family:Outfit;font-weight:800;src:url(/assets/fonts/outfit-latin-800-normal.woff2)}
+@font-face{font-family:Roboto;font-weight:400;src:url(/assets/fonts/roboto-latin-400-normal.woff2)}
+@font-face{font-family:Roboto;font-weight:700;src:url(/assets/fonts/roboto-latin-700-normal.woff2)}
+:root{--rojo:#FE0000;--tinta:#101828;--crema:#FFF3E3;--gris:#4A5565;--borde:#EADFD0;--fondo:#FFFAF3;--card:#fff;--ok:#0f7a3d;--okbg:#e3f6ea;--info:#1d4ed8;--infobg:#e6eeff;--warn:#9a5b00;--warnbg:#fff1d6;--bad:#b00020;--badbg:#ffe3e3}
+@media (prefers-color-scheme:dark){:root{--tinta:#f4f1ec;--gris:#b6bdc9;--borde:#2e3544;--fondo:#0e1320;--card:#161c2c;--crema:#1c2336;--okbg:#12301f;--ok:#7be0a5;--infobg:#15244a;--info:#9db8ff;--warnbg:#3a2a0a;--warn:#ffcf7a;--badbg:#3d1117;--bad:#ff9aa8}}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--fondo);color:var(--tinta);font:16px/1.5 Roboto,system-ui,sans-serif}
+h1,h2,h3,.hora b{font-family:Outfit,system-ui,sans-serif;margin:0}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px 80px}
+header{display:flex;align-items:center;gap:16px;padding:22px 0 8px;flex-wrap:wrap}.logo{height:46px}.sp{flex:1}.fecha{color:var(--gris)}
+h1{font-size:clamp(26px,5vw,40px);font-weight:800;letter-spacing:-.02em;margin:10px 0 4px}h2{font-size:22px;font-weight:800;margin:30px 0 12px}
+.aviso{background:var(--infobg);color:var(--info);border-radius:14px;padding:12px 16px;margin:10px 0 0;font-size:15px}
+.barra{display:flex;gap:10px;align-items:center;margin:14px 0 0;flex-wrap:wrap;color:var(--gris);font-size:14px}
+.card{background:var(--card);border:1px solid var(--borde);border-radius:20px;padding:18px;margin-bottom:18px}
+.top{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.hora{background:var(--rojo);color:#fff;border-radius:14px;padding:8px 14px;text-align:center;min-width:96px}.hora b{display:block;font-size:26px;font-weight:800;line-height:1.1}.hora span{font-size:11px;opacity:.9}
+.meta{flex:1;min-width:200px}.meta h3{font-size:20px;font-weight:800;line-height:1.25}.meta p{margin:4px 0 0;color:var(--gris);font-size:14px}
+.chip{display:inline-block;border-radius:999px;padding:5px 12px;font:700 13px Roboto,sans-serif;white-space:nowrap}
+.ok{background:var(--okbg);color:var(--ok)}.info{background:var(--infobg);color:var(--info)}.warn{background:var(--warnbg);color:var(--warn)}.bad{background:var(--badbg);color:var(--bad)}
+.plan{margin:12px 0 0;padding:12px 14px;border-radius:12px;background:var(--crema);font-size:15px}
+.strip{display:flex;gap:10px;overflow-x:auto;padding:14px 0 6px}.strip img{height:240px;width:auto;border-radius:12px;border:1px solid var(--borde);flex:none}
+label{display:block;font-weight:700;margin:12px 0 4px;font-size:14px}
+textarea,input[type=datetime-local],input[type=password]{width:100%;border:1px solid var(--borde);border-radius:12px;padding:10px 12px;font:15px/1.5 Roboto,sans-serif;background:var(--card);color:var(--tinta)}
+textarea{min-height:230px;resize:vertical}textarea:disabled,input:disabled{opacity:.7;background:var(--crema)}
+.row{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}.row>div{flex:1;min-width:220px}.cnt{color:var(--gris);font-size:13px;text-align:right}
+.prod{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0 0}.prod td,.prod th{padding:6px 8px;border-bottom:1px solid var(--borde);text-align:left}.prod th{color:var(--gris)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+button{border:0;border-radius:12px;padding:11px 18px;font:700 15px Roboto,sans-serif;cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}
+.b1{background:var(--rojo);color:#fff}.b2{background:var(--crema);color:var(--tinta);border:1px solid var(--borde)}
+.msg{margin-top:10px;font-size:14px;min-height:20px}.msg.e{color:var(--bad);font-weight:700}.msg.o{color:var(--ok);font-weight:700}
+.vacio{background:var(--card);border:1px dashed var(--borde);border-radius:20px;padding:26px;text-align:center;color:var(--gris)}
+.login-box{max-width:380px;background:var(--card);border:1px solid var(--borde);border-radius:20px;padding:22px;margin-top:16px}.login-box button{margin-top:14px;width:100%}
+@media (max-width:560px){.strip img{height:190px}}
