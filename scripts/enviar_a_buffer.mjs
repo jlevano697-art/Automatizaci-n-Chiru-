@@ -96,6 +96,7 @@ async function crearEnBuffer(item, urls, pie) {
     schedulingType: automatic,
     mode: customScheduled,
     dueAt: ${esc(new Date(item.fecha).toISOString())},
+    metadata: { facebook: { type: post } },
     assets: [${assets}]
   }) {
     ... on PostActionSuccess { post { id } }
