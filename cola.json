@@ -63,7 +63,7 @@
     "perfil": "Dueño de perro",
     "fecha": "2026-10-08T22:12:19-05:00",
     "aprobado": true,
-    "estado": "pendiente",
+    "estado": "en_buffer",
     "laminas": [
       "publicar/12_perro/01.jpg",
       "publicar/12_perro/02.jpg",
@@ -77,6 +77,8 @@
         "id": "261e872e-8415-4c35-9ded-cfc356928d78",
         "precio": 20
       }
-    ]
+    ],
+    "buffer_post_id": "6ac85aef93f9e5101fe5dfb8",
+    "enviado_en": "2026-10-09T03:09:35.605Z"
   }
 ]
