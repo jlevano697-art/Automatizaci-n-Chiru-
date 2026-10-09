@@ -1,11 +1,12 @@
-name: Publicar contenido
+name: Enviar publicaciones a Buffer
 
 on:
-  # Vía API de Meta: en pausa mientras se use Buffer (sin cron). Solo manual.
+  schedule:
+    - cron: "0 13 * * *"   # todos los días a las 13:00 UTC (08:00 en Lima)
   workflow_dispatch:
     inputs:
       diagnostico:
-        description: "Mostrar FB_PAGE_ID e IG_USER_ID (no muestra el token)"
+        description: "Listar organizaciones y canales de Buffer (no muestra la clave)"
         type: boolean
         default: false
 
@@ -13,11 +14,11 @@ permissions:
   contents: write
 
 concurrency:
-  group: publicar
+  group: enviar-a-buffer
   cancel-in-progress: false
 
 jobs:
-  publicar:
+  enviar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,19 +28,16 @@ jobs:
       - name: Diagnóstico
         if: ${{ inputs.diagnostico }}
         env:
-          META_TOKEN: ${{ secrets.META_TOKEN }}
-        run: node scripts/publicar.mjs --diagnostico
-      - name: Publicar lo que toque
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+        run: node scripts/enviar_a_buffer.mjs --diagnostico
+      - name: Enviar a Buffer lo aprobado
         if: ${{ !inputs.diagnostico }}
         env:
           # MODO=real solo cuando crees la variable de repositorio MODO con valor "real"
           MODO: ${{ vars.MODO }}
-          META_TOKEN: ${{ secrets.META_TOKEN }}
-          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
-          IG_USER_ID: ${{ secrets.IG_USER_ID }}
-          # Opcional: variable REDES = "facebook" para publicar solo en Facebook
-          REDES: ${{ vars.REDES }}
-        run: node scripts/publicar.mjs
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          BUFFER_CHANNEL_ID: ${{ vars.BUFFER_CHANNEL_ID }}
+        run: node scripts/enviar_a_buffer.mjs
       - name: Guardar estado de la cola
         run: |
           if [ -n "$(git status --porcelain cola.json)" ]; then
