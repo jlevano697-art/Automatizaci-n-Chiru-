@@ -1,0 +1,50 @@
+name: Publicar contenido
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # revisa la cola cada 15 min (GitHub puede demorar unos minutos)
+  workflow_dispatch:
+    inputs:
+      diagnostico:
+        description: "Mostrar FB_PAGE_ID e IG_USER_ID (no muestra el token)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Diagnóstico
+        if: ${{ inputs.diagnostico }}
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+        run: node scripts/publicar.mjs --diagnostico
+      - name: Publicar lo que toque
+        if: ${{ !inputs.diagnostico }}
+        env:
+          # MODO=real solo cuando crees la variable de repositorio MODO con valor "real"
+          MODO: ${{ vars.MODO }}
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: node scripts/publicar.mjs
+      - name: Guardar estado de la cola
+        run: |
+          if [ -n "$(git status --porcelain cola.json)" ]; then
+            git config user.name "chiru-bot"
+            git config user.email "chiru-bot@users.noreply.github.com"
+            git add cola.json
+            git commit -m "Actualizar estado de la cola"
+            git push
+          fi

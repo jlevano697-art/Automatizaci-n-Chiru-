@@ -1,0 +1,82 @@
+[
+  {
+    "id": "05_bolsillo",
+    "perfil": "Comprador que cuida su bolsillo",
+    "fecha": "2026-10-13T12:00:00-05:00",
+    "aprobado": false,
+    "estado": "pendiente",
+    "laminas": [
+      "publicar/05_bolsillo/01.jpg",
+      "publicar/05_bolsillo/02.jpg",
+      "publicar/05_bolsillo/03.jpg",
+      "publicar/05_bolsillo/04.jpg",
+      "publicar/05_bolsillo/05.jpg"
+    ],
+    "pie": "carruseles/05_bolsillo/pie.txt",
+    "productos": [
+      {
+        "id": "1b2f5ab8-e751-4328-a20b-41c5f3935b55",
+        "precio": 28
+      },
+      {
+        "id": "7c791277-7a97-465b-a59e-097678e536ff",
+        "precio": 34
+      },
+      {
+        "id": "ca159455-2167-4af0-a488-357f3d58f550",
+        "precio": 40
+      }
+    ]
+  },
+  {
+    "id": "08_hogar",
+    "perfil": "Ama/o de casa",
+    "fecha": "2026-10-14T19:00:00-05:00",
+    "aprobado": false,
+    "estado": "pendiente",
+    "laminas": [
+      "publicar/08_hogar/01.jpg",
+      "publicar/08_hogar/02.jpg",
+      "publicar/08_hogar/03.jpg",
+      "publicar/08_hogar/04.jpg",
+      "publicar/08_hogar/05.jpg",
+      "publicar/08_hogar/06.jpg"
+    ],
+    "pie": "carruseles/08_hogar/pie.txt",
+    "productos": [
+      {
+        "id": "7982b177-9469-4940-9f1d-d0f0f333bf2d",
+        "precio": 100
+      },
+      {
+        "id": "76e05735-980c-46d8-b7ac-e73b4910a291",
+        "precio": 60
+      },
+      {
+        "id": "fd0438d6-987c-4bde-8983-3889985f973d",
+        "precio": 80
+      }
+    ]
+  },
+  {
+    "id": "12_perro",
+    "perfil": "Dueño de perro",
+    "fecha": "2026-10-16T19:00:00-05:00",
+    "aprobado": false,
+    "estado": "pendiente",
+    "laminas": [
+      "publicar/12_perro/01.jpg",
+      "publicar/12_perro/02.jpg",
+      "publicar/12_perro/03.jpg",
+      "publicar/12_perro/04.jpg",
+      "publicar/12_perro/05.jpg"
+    ],
+    "pie": "carruseles/12_perro/pie.txt",
+    "productos": [
+      {
+        "id": "261e872e-8415-4c35-9ded-cfc356928d78",
+        "precio": 20
+      }
+    ]
+  }
+]

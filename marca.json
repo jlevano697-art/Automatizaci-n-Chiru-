@@ -1,0 +1,58 @@
+{
+  "nombre": "Chiru",
+  "url": "https://chiru.pe/es/",
+  "descripcion": "Marketplace B2B del Perú: conecta importadores, proveedores y agentes aduaneros. Permite publicar productos y servicios, y gestionar cotizaciones (RFQ), pedidos y pagos.",
+  "publico": {
+    "compradores": "Importadores, comerciantes y negocios que buscan proveedores y productos.",
+    "vendedores": "Proveedores y tiendas que quieren abrir su tienda en Chiru (CTA 'Abrir mi tienda' / 'Únete ahora')."
+  },
+  "logo": {
+    "archivo_local": "assets/chiru_logo.svg",
+    "archivo_web": "https://chiru.pe/CHIRU-SVG.svg",
+    "descripcion": "Logotipo 'Chiru' en letra script gruesa, rojo #FE0000, fondo transparente (proporción 150.74 x 62.35). Es el logo oficial: el del encabezado de la web y el del perfil de Instagram.",
+    "color": "#FE0000",
+    "uso": "Sobre fondo blanco o claro va en rojo; sobre fondo rojo u oscuro usar versión en blanco. No deformar ni usar el cuadrado rojo como logo.",
+    "no_usar_como_logo": {
+      "archivo_local": "assets/favicon_cuadrado_rojo.svg",
+      "nota": "Cuadrado rojo con glifo blanco: es solo el favicon de la pestaña del navegador."
+    }
+  },
+  "colores": {
+    "rojo_marca": "#FE0000",
+    "acento_rosa_ui": "#FF2056",
+    "rojo_secundario": "#EF4444",
+    "ambar": "#F59E0B",
+    "ambar_claro": "#FDE68A",
+    "texto_oscuro": "#101828",
+    "gris_medio": "#4A5565",
+    "gris_claro": "#E5E7EB",
+    "fondo": "#FFFFFF",
+    "nota": "Hex derivados de los valores oklch/rgb de la web; el rojo del logo (#FE0000) es el único tomado literal del SVG."
+  },
+  "tipografias": {
+    "principal": "Roboto",
+    "titulares": "Roboto (variable --font-heading)",
+    "acento": "Outfit"
+  },
+  "tono": {
+    "persona": "Tuteo, cercano y directo ('Descubre', 'Celebra', 'Conecta').",
+    "estilo": "Comercial y práctico, con emojis puntuales (🔥 🇵🇪) y orgullo peruano.",
+    "ejemplo_web": "¡Porque nuestra música criolla se lleva en el corazón! 🇵🇪"
+  },
+  "campanas_activas": [
+    { "nombre": "Día de la Canción Criolla", "fecha": "2026-10-31", "nota": "Banner en portada con cuenta regresiva; 'las mejores ofertas y promociones'." }
+  ],
+  "instagram": {
+    "cuenta": "@chiru_pe",
+    "seguidores": 8,
+    "bio": "🛒 Compra. Vende. Crece. El marketplace que conecta personas y negocios. ✨ Encuentra productos | Publica | Vende",
+    "avatar": "Círculo con el mismo logotipo 'Chiru' en script rojo.",
+    "publicaciones_recientes": "Publican casi a diario desde el 4 de septiembre de 2026; mezcla de reels y fotos. Temas: nuevos productos, cómo registrarte como usuario, testimonio 'Yo feliz porque vendo desde mi página web creada en Chiru', novedades de rubros.",
+    "estilo_grafico": {
+      "portadas": "Tipografía script/retro gruesa en crema y ámbar con contorno marrón, destellos ✦ y el 'Chiru' script en rojo. Muy expresivo.",
+      "carrusel_de_producto": "Fondo oscuro con rojo, titular blanco/rojo tipo 'Esto se vende hoy en Chiru', subtítulo '5 rubros, precios reales', tarjetas de producto con foto sobre fondo claro, etiqueta roja de categoría (ej. Calzado), precio en rojo (S/ 199) y CTA 'Desliza →'."
+    },
+    "nota": "Vista pública sin sesión iniciada; el grid y los textos alternativos se leyeron sin poder abrir cada publicación."
+  },
+  "fuente": "Análisis de https://chiru.pe/es/ y https://www.instagram.com/chiru_pe/ el 2026-09-19. Falta revisar la página de Facebook."
+}

@@ -1,0 +1,6 @@
+.env
+node_modules/
+carruseles/*/_src/
+carruseles/*/_hoja.png
+assets/fotos/
+.claude/
