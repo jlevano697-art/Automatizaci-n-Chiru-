@@ -3,7 +3,7 @@
     "id": "05_bolsillo",
     "perfil": "Comprador que cuida su bolsillo",
     "fecha": "2026-10-09T01:22:00-05:00",
-    "aprobado": false,
+    "aprobado": true,
     "estado": "pendiente",
     "laminas": [
       "publicar/05_bolsillo/01.jpg",
