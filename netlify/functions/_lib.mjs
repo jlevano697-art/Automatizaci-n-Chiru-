@@ -5,7 +5,7 @@ import { createHmac, createHash, timingSafeEqual } from "node:crypto";
 export const TZ = "America/Lima";
 export const MAX_POR_DIA = 3;
 export const MIN_HORAS = 2;
-export const MARGEN_MIN = 10;
+export const MARGEN_MIN = 4;
 
 export const cfg = () => ({
   repo: process.env.GITHUB_REPO || "jlevano697-art/Automatizaci-n-Chiru-",
