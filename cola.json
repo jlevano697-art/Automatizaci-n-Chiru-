@@ -188,7 +188,7 @@
     "perfil": "Ama/o de casa",
     "fecha": "2026-10-09T13:35:00-05:00",
     "aprobado": true,
-    "estado": "pendiente",
+    "estado": "en_buffer",
     "laminas": [
       "publicar/08_hogar/01.jpg",
       "publicar/08_hogar/02.jpg",
@@ -211,6 +211,8 @@
         "id": "fd0438d6-987c-4bde-8983-3889985f973d",
         "precio": 76
       }
-    ]
+    ],
+    "buffer_post_id": "6ac889d79db755aaaac92f3a",
+    "enviado_en": "2026-10-09T06:29:43.730Z"
   }
 ]
