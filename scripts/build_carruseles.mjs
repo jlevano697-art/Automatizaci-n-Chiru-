@@ -11,7 +11,7 @@ const CHROME = "C:/Program Files/Google/Chrome/Application/chrome.exe";
 const solo = process.argv.slice(2);
 const raiz = resolve(import.meta.dirname, "..");
 
-const browser = await chromium.launch({ executablePath: CHROME, headless: true });
+const browser = await chromium.launch({ executablePath: CHROME, headless: true, args: ["--disable-gpu"] });
 const ctx = await browser.newContext({ viewport: { width: 1080, height: 1350 }, deviceScaleFactor: 2 });
 const page = await ctx.newPage();
 

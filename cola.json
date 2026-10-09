@@ -1,5 +1,28 @@
 [
   {
+    "id": "12_perro",
+    "perfil": "Dueño de perro",
+    "fecha": "2026-10-08T22:12:19-05:00",
+    "aprobado": true,
+    "estado": "en_buffer",
+    "laminas": [
+      "publicar/12_perro/01.jpg",
+      "publicar/12_perro/02.jpg",
+      "publicar/12_perro/03.jpg",
+      "publicar/12_perro/04.jpg",
+      "publicar/12_perro/05.jpg"
+    ],
+    "pie": "carruseles/12_perro/pie.txt",
+    "productos": [
+      {
+        "id": "261e872e-8415-4c35-9ded-cfc356928d78",
+        "precio": 20
+      }
+    ],
+    "buffer_post_id": "6ac85aef93f9e5101fe5dfb8",
+    "enviado_en": "2026-10-09T03:09:35.605Z"
+  },
+  {
     "id": "05_bolsillo",
     "perfil": "Comprador que cuida su bolsillo",
     "fecha": "2026-10-09T01:22:00-05:00",
@@ -31,9 +54,139 @@
     "enviado_en": "2026-10-09T06:13:33.661Z"
   },
   {
+    "id": "13_apple",
+    "perfil": "Usuario de Apple",
+    "fecha": "2026-10-09T19:00:00-05:00",
+    "aprobado": false,
+    "estado": "pendiente",
+    "laminas": [
+      "publicar/13_apple/01.jpg",
+      "publicar/13_apple/02.jpg",
+      "publicar/13_apple/03.jpg",
+      "publicar/13_apple/04.jpg",
+      "publicar/13_apple/05.jpg",
+      "publicar/13_apple/06.jpg"
+    ],
+    "pie": "carruseles/13_apple/pie.txt",
+    "productos": [
+      {
+        "id": "2a77c706-2bbb-4a17-91d4-df4463f1abce",
+        "precio": 160
+      },
+      {
+        "id": "b2c4a230-7c08-4fe8-928d-5362a63f646d",
+        "precio": 75
+      },
+      {
+        "id": "5f12b024-a1b0-49bd-abca-4c373ce06a90",
+        "precio": 60
+      }
+    ]
+  },
+  {
+    "id": "14_estudio",
+    "perfil": "Estudiante u oficina",
+    "fecha": "2026-10-10T12:00:00-05:00",
+    "aprobado": false,
+    "estado": "pendiente",
+    "laminas": [
+      "publicar/14_estudio/01.jpg",
+      "publicar/14_estudio/02.jpg",
+      "publicar/14_estudio/03.jpg",
+      "publicar/14_estudio/04.jpg",
+      "publicar/14_estudio/05.jpg",
+      "publicar/14_estudio/06.jpg"
+    ],
+    "pie": "carruseles/14_estudio/pie.txt",
+    "productos": [
+      {
+        "id": "1c1abbb5-15ba-46fd-9bfb-c6a1f04edd9f",
+        "precio": 89
+      },
+      {
+        "id": "8454ba35-23cb-44dc-991e-7824f739d397",
+        "precio": 80
+      },
+      {
+        "id": "f8c3778f-6d1b-443e-a8aa-21ec7b228a63",
+        "precio": 45
+      }
+    ]
+  },
+  {
+    "id": "15_auto",
+    "perfil": "Conductor",
+    "fecha": "2026-10-10T19:00:00-05:00",
+    "aprobado": false,
+    "estado": "pendiente",
+    "laminas": [
+      "publicar/15_auto/01.jpg",
+      "publicar/15_auto/02.jpg",
+      "publicar/15_auto/03.jpg",
+      "publicar/15_auto/04.jpg"
+    ],
+    "pie": "carruseles/15_auto/pie.txt",
+    "productos": [
+      {
+        "id": "6227a5c9-403d-4864-b6e1-6edd5d74416e",
+        "precio": 245
+      }
+    ]
+  },
+  {
+    "id": "16_energia",
+    "perfil": "Siempre con batería",
+    "fecha": "2026-10-11T12:00:00-05:00",
+    "aprobado": false,
+    "estado": "pendiente",
+    "laminas": [
+      "publicar/16_energia/01.jpg",
+      "publicar/16_energia/02.jpg",
+      "publicar/16_energia/03.jpg",
+      "publicar/16_energia/04.jpg",
+      "publicar/16_energia/05.jpg"
+    ],
+    "pie": "carruseles/16_energia/pie.txt",
+    "productos": [
+      {
+        "id": "bd3b85ee-c2cb-46e6-97e1-705657734946",
+        "precio": 120
+      },
+      {
+        "id": "d6dfb05b-70e3-4f5a-88d2-1412f7ee6dcb",
+        "precio": 199.9
+      }
+    ]
+  },
+  {
+    "id": "17_tv",
+    "perfil": "Hogar conectado",
+    "fecha": "2026-10-11T19:00:00-05:00",
+    "aprobado": false,
+    "estado": "pendiente",
+    "laminas": [
+      "publicar/17_tv/01.jpg",
+      "publicar/17_tv/02.jpg",
+      "publicar/17_tv/03.jpg",
+      "publicar/17_tv/04.jpg",
+      "publicar/17_tv/05.jpg"
+    ],
+    "pie": "carruseles/17_tv/pie.txt",
+    "productos": [
+      {
+        "id": "1a31025d-576e-4231-9333-d01e526c711c",
+        "precio": 50
+      },
+      {
+        "id": "cd03f83f-ee2d-4dfa-8caa-01fc7be3a660",
+        "precio": 79.99
+      }
+    ]
+  },
+  {
     "id": "08_hogar",
     "perfil": "Ama/o de casa",
-    "fecha": "2026-10-09T01:05:00-05:00",
+    "fecha": "2026-10-12T12:00:00-05:00",
     "aprobado": false,
     "estado": "pendiente",
     "laminas": [
@@ -59,28 +212,5 @@
         "precio": 76
       }
     ]
-  },
-  {
-    "id": "12_perro",
-    "perfil": "Dueño de perro",
-    "fecha": "2026-10-08T22:12:19-05:00",
-    "aprobado": true,
-    "estado": "en_buffer",
-    "laminas": [
-      "publicar/12_perro/01.jpg",
-      "publicar/12_perro/02.jpg",
-      "publicar/12_perro/03.jpg",
-      "publicar/12_perro/04.jpg",
-      "publicar/12_perro/05.jpg"
-    ],
-    "pie": "carruseles/12_perro/pie.txt",
-    "productos": [
-      {
-        "id": "261e872e-8415-4c35-9ded-cfc356928d78",
-        "precio": 20
-      }
-    ],
-    "buffer_post_id": "6ac85aef93f9e5101fe5dfb8",
-    "enviado_en": "2026-10-09T03:09:35.605Z"
   }
 ]

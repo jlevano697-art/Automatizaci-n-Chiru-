@@ -108,13 +108,15 @@ const arrow = (c = "#fff") =>
 export function foto(f) {
   const c = f.crop || { x: 0, y: 0, w: 1, h: 1 };
   const ar = f.ar || (c.w * (f.srcW || 1200)) / (c.h * (f.srcH || 1200));
-  return `<div class="fbox ${ar >= 1 ? "wide" : "tall"}" style="aspect-ratio:${ar}"><img src="${A}/fotos/${f.file}" style="width:${100 / c.w}%;left:${(-c.x / c.w) * 100}%;top:${(-c.y / c.h) * 100}%"></div>`;
+  // escala (0-1): reduce la foto dentro de su marco; se usa con imágenes de baja resolución para que no se vean borrosas
+  const esc = f.escala ? `width:auto;height:${Math.round(f.escala * 100)}%;` : "";
+  return `<div class="fbox ${ar >= 1 ? "wide" : "tall"}" style="aspect-ratio:${ar};${esc}"><img src="${A}/fotos/${f.file}" style="width:${100 / c.w}%;left:${(-c.x / c.w) * 100}%;top:${(-c.y / c.h) * 100}%"></div>`;
 }
 
 const wrap = (cls, body) =>
   `<!doctype html><html lang="es"><head><meta charset="utf-8"><style>${css}</style></head><body class="${cls}">${body}</body></html>`;
 
-const moneda = (n) => `S/ ${Number.isInteger(n) ? n : n.toFixed(2).replace(/0$/, "")}`;
+const moneda = (n) => `S/ ${Number.isInteger(n) ? n : n.toFixed(2)}`;
 
 export const plantillas = {
   portada(d) {
