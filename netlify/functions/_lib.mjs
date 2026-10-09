@@ -92,6 +92,18 @@ export async function escribirArchivo(ruta, texto, sha, mensaje) {
   if (!r.ok) throw new Error(`GitHub respondió ${r.status} al guardar ${ruta}`);
 }
 
+/** Lanza el flujo de GitHub que entrega a Buffer lo aprobado. Necesita el permiso "Actions: Read and write" en el token. */
+export async function lanzarEnvio() {
+  const { branch } = cfg();
+  const r = await gh("actions/workflows/enviar_a_buffer.yml/dispatches", {
+    method: "POST",
+    body: { ref: branch, inputs: { enviar_real: "true", diagnostico: "false" } },
+  });
+  if (r.status === 204) return { ok: true };
+  const motivo = r.status === 403 || r.status === 404 ? "el token de GitHub no tiene el permiso Actions: Read and write" : `GitHub respondió ${r.status}`;
+  return { ok: false, motivo };
+}
+
 /** Lee cola.json, aplica `fn(cola)` (que puede lanzar un error de validación) y la guarda. Reintenta si hubo conflicto. */
 export async function mutarCola(fn, mensaje) {
   for (let i = 0; i < 3; i++) {

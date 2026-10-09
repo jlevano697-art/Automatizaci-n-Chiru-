@@ -9,6 +9,10 @@ on:
         description: "Listar organizaciones y canales de Buffer (no muestra la clave)"
         type: boolean
         default: false
+      enviar_real:
+        description: "Enviar de verdad a Buffer lo aprobado (lo activa el botón Aprobar del panel)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -34,7 +38,8 @@ jobs:
         if: ${{ !inputs.diagnostico }}
         env:
           # MODO=real solo cuando crees la variable de repositorio MODO con valor "real"
-          MODO: ${{ vars.MODO }}
+          # Lanzado por el botón Aprobar del panel: modo real. El ciclo horario usa la variable MODO.
+          MODO: ${{ (inputs.enviar_real && 'real') || vars.MODO }}
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
           BUFFER_CHANNEL_ID: ${{ vars.BUFFER_CHANNEL_ID }}
         run: node scripts/enviar_a_buffer.mjs

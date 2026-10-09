@@ -1,7 +1,7 @@
 // API del panel (Netlify Functions v2). Rutas: /api/login, /api/salir, /api/estado, /api/pieza/:id/(guardar|aprobar|quitar)
 import {
   cfg, configurado, ahora, dia, crearSesion, sesionValida, contrasenaCorrecta, cookieSesion,
-  leerArchivo, escribirArchivo, mutarCola, validarCambios, ErrorDeUsuario,
+  leerArchivo, escribirArchivo, mutarCola, validarCambios, lanzarEnvio, ErrorDeUsuario,
 } from "./_lib.mjs";
 
 export const config = { path: "/api/*" };
@@ -79,7 +79,9 @@ async function accionPieza(id, accion, body) {
       if (errs.length) throw new ErrorDeUsuario(errs.join(". "));
       it.aprobado = true;
     }, `Panel: aprobar ${id}`);
-    return { ok: true };
+    // Aprobar con el botón = autorización: se lanza el envío a Buffer de inmediato.
+    const envio = await lanzarEnvio().catch((e) => ({ ok: false, motivo: e.message }));
+    return { ok: true, envio: envio.ok ? "iniciado" : "no_iniciado", aviso: envio.ok ? null : envio.motivo };
   }
 
   await mutarCola((c) => {

@@ -39,7 +39,7 @@ function plan(x, ahoraMs) {
     ? "Estaba programada para el " + cuando + ". Ya pasó la hora: Buffer debió publicarla. Confírmalo en la página."
     : "Ya está en Buffer: se publicará sola el " + cuando + ". Ya no se edita desde aquí.";
   if (x.estado === "error") return "No se pudo enviar: " + (x.error || "revisa el detalle") + ". Corrige y vuelve a aprobar.";
-  if (x.aprobado) return "Aprobada. Se enviará a Buffer en el próximo ciclo (cada hora) para publicarse el " + cuando + ".";
+  if (x.aprobado) return "Aprobada, pendiente de enviar a Buffer para publicarse el " + cuando + ". Si no pasa a 'Programado en Buffer' en unos minutos, revisa el aviso de arriba.";
   return "Propuesta: publicar el " + cuando + " (hora de Lima). Revisa, edita si quieres y aprueba.";
 }
 
@@ -81,7 +81,17 @@ function tarjeta(x, ahoraMs) {
   const base = "/api/pieza/" + encodeURIComponent(x.id);
   if (x.estado === "pendiente" && !x.aprobado) {
     const g = el("button", "b2", "Guardar cambios"); g.type = "button"; g.onclick = () => run([[base + "/guardar", datos()]], "Cambios guardados en el repositorio.");
-    const a = el("button", "b1", "Aprobar para programar"); a.type = "button"; a.onclick = () => run([[base + "/guardar", datos()], [base + "/aprobar", {}]], "Aprobada. El envío a Buffer la tomará en su próximo ciclo.");
+    const a = el("button", "b1", "Aprobar y enviar a Buffer"); a.type = "button";
+    a.onclick = async () => {
+      const botones = btns.querySelectorAll("button"); botones.forEach((b) => (b.disabled = true));
+      try {
+        msg.className = "msg"; msg.textContent = "Procesando…";
+        await api(base + "/guardar", datos());
+        const r = await api(base + "/aprobar", {});
+        sucio = false; await cargar(true);
+        seguirEnvio(x.id, r);
+      } catch (e) { msg.className = "msg e"; msg.textContent = e.message; botones.forEach((b) => (b.disabled = false)); }
+    };
     btns.append(g, a);
   } else if (x.estado === "pendiente" && x.aprobado) {
     const q = el("button", "b2", "Quitar aprobación (para editar)"); q.type = "button"; q.onclick = () => run([[base + "/quitar", {}]], "Aprobación quitada.");
@@ -89,6 +99,26 @@ function tarjeta(x, ahoraMs) {
   }
   c.append(btns, msg);
   return c;
+}
+
+async function seguirEnvio(id, r) {
+  const b = $("#estado-envio"); b.hidden = false; b.className = "aviso";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (r.envio !== "iniciado") {
+    b.className = "aviso malo";
+    b.textContent = "Aprobada, pero no pude iniciar el envío a Buffer (" + (r.aviso || "motivo desconocido") + "). La pieza queda aprobada, sin enviar.";
+    return;
+  }
+  b.textContent = "Aprobada. Enviando a Buffer… (puede tardar un minuto)";
+  const limite = Date.now() + 180000;
+  while (Date.now() < limite) {
+    await new Promise((ok) => setTimeout(ok, 5000));
+    let d; try { d = await api("/api/estado"); } catch { continue; }
+    const it = d.items.find((x) => x.id === id); if (!it) break;
+    if (it.estado === "en_buffer") { b.className = "aviso bueno"; b.textContent = "Listo: quedó programada en Buffer para el " + diaLargo(it.fecha).toLowerCase() + " a las " + horaLima(it.fecha) + "."; await cargar(true); return; }
+    if (it.estado === "error") { b.className = "aviso malo"; b.textContent = "No se pudo enviar: " + (it.error || "error desconocido"); await cargar(true); return; }
+  }
+  b.textContent = "Sigue en proceso. Pulsa Actualizar ahora en un minuto para ver el resultado.";
 }
 
 function mostrarLogin() { $("#panel").hidden = true; $("#login").hidden = false; $("#clave").focus(); }

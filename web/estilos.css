@@ -32,3 +32,5 @@ button{border:0;border-radius:12px;padding:11px 18px;font:700 15px Roboto,sans-s
 .vacio{background:var(--card);border:1px dashed var(--borde);border-radius:20px;padding:26px;text-align:center;color:var(--gris)}
 .login-box{max-width:380px;background:var(--card);border:1px solid var(--borde);border-radius:20px;padding:22px;margin-top:16px}.login-box button{margin-top:14px;width:100%}
 @media (max-width:560px){.strip img{height:190px}}
+.aviso.bueno{background:var(--okbg);color:var(--ok);font-weight:700}.aviso.malo{background:var(--badbg);color:var(--bad);font-weight:700}
+#estado-envio{margin-top:14px}
