@@ -163,7 +163,7 @@
     "perfil": "Hogar conectado",
     "fecha": "2026-10-11T16:07:00-05:00",
     "aprobado": true,
-    "estado": "pendiente",
+    "estado": "en_buffer",
     "laminas": [
       "publicar/17_tv/01.jpg",
       "publicar/17_tv/02.jpg",
@@ -181,7 +181,9 @@
         "id": "cd03f83f-ee2d-4dfa-8caa-01fc7be3a660",
         "precio": 79.99
       }
-    ]
+    ],
+    "buffer_post_id": "6acbf97eea568e911a3f90df",
+    "enviado_en": "2026-10-11T21:02:54.973Z"
   },
   {
     "id": "08_hogar",
