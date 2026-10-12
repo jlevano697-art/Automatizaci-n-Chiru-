@@ -58,7 +58,7 @@
     "perfil": "Usuario de Apple",
     "fecha": "2026-10-12T15:19:00-05:00",
     "aprobado": true,
-    "estado": "pendiente",
+    "estado": "en_buffer",
     "laminas": [
       "publicar/13_apple/01.jpg",
       "publicar/13_apple/02.jpg",
@@ -81,7 +81,9 @@
         "id": "5f12b024-a1b0-49bd-abca-4c373ce06a90",
         "precio": 60
       }
-    ]
+    ],
+    "buffer_post_id": "6acd3f4a2c1b16d2e121387a",
+    "enviado_en": "2026-10-12T20:12:58.823Z"
   },
   {
     "id": "14_estudio",
