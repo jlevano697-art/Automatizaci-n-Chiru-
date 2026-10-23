@@ -90,7 +90,7 @@
     "perfil": "Estudiante u oficina",
     "fecha": "2026-10-23T10:32:00-05:00",
     "aprobado": true,
-    "estado": "pendiente",
+    "estado": "en_buffer",
     "laminas": [
       "publicar/14_estudio/01.jpg",
       "publicar/14_estudio/02.jpg",
@@ -113,7 +113,9 @@
         "id": "f8c3778f-6d1b-443e-a8aa-21ec7b228a63",
         "precio": 45
       }
-    ]
+    ],
+    "buffer_post_id": "6adb7cb97af932dee4e9882f",
+    "enviado_en": "2026-10-23T15:26:50.159Z"
   },
   {
     "id": "15_auto",
