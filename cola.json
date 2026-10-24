@@ -142,7 +142,7 @@
     "perfil": "Siempre con batería",
     "fecha": "2026-10-24T16:20:00-05:00",
     "aprobado": true,
-    "estado": "pendiente",
+    "estado": "en_buffer",
     "laminas": [
       "publicar/16_energia/01.jpg",
       "publicar/16_energia/02.jpg",
@@ -160,7 +160,9 @@
         "id": "d6dfb05b-70e3-4f5a-88d2-1412f7ee6dcb",
         "precio": 199.9
       }
-    ]
+    ],
+    "buffer_post_id": "6add1fde8b3d437ddcdaacf5",
+    "enviado_en": "2026-10-24T21:15:10.896Z"
   },
   {
     "id": "17_tv",
