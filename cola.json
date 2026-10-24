@@ -141,7 +141,7 @@
     "id": "16_energia",
     "perfil": "Siempre con batería",
     "fecha": "2026-10-24T16:20:00-05:00",
-    "aprobado": false,
+    "aprobado": true,
     "estado": "pendiente",
     "laminas": [
       "publicar/16_energia/01.jpg",
