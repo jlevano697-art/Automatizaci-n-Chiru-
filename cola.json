@@ -122,7 +122,7 @@
     "perfil": "Conductor",
     "fecha": "2026-10-24T19:35:00-05:00",
     "aprobado": true,
-    "estado": "pendiente",
+    "estado": "en_buffer",
     "laminas": [
       "publicar/15_auto/01.jpg",
       "publicar/15_auto/02.jpg",
@@ -135,7 +135,9 @@
         "id": "6227a5c9-403d-4864-b6e1-6edd5d74416e",
         "precio": 245
       }
-    ]
+    ],
+    "buffer_post_id": "6add4ceee4be8a4d8683be94",
+    "enviado_en": "2026-10-25T00:27:26.822Z"
   },
   {
     "id": "16_energia",
